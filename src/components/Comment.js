@@ -1,15 +1,8 @@
 import React from "react";
 
-export default function Comment({ comment, hat, callback }) {
+export default function Comment({ comment }) {
   const { data } = comment;
   const { date, value } = data;
-
-  const updateComment = async (event) => {
-    event.preventDefault();
-    comment.data.value += " updated!";
-    await hat.hatData().update([comment]);
-    callback(comment)
-  };
 
   return (
     <div key={date} className="comment">
@@ -19,7 +12,7 @@ export default function Comment({ comment, hat, callback }) {
           <span className="date">{new Date(date).toLocaleTimeString()}</span>
         </div>
         <div className="actions">
-          <a href="" className="edit" onClick={updateComment}>
+          <a href="" className="edit">
             Edit
           </a>
           <a href="" className="delete">
